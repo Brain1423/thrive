@@ -20,14 +20,14 @@ const App = () => {
       </View>
       </View>
       <ScrollView contentContainerStyle={styles.coursesContainer}>
-
-        {coursesData.map((course, index) => (
+        {jobData.map((job, index) => (
           <View key={index} style={styles.courseCard}>
-            <ImageBackground source={{ uri: course.image }} style={styles.image}>
+            <ImageBackground source={{ uri: job.image }} style={styles.image}>
               <View style={styles.overlay}>
-                <Text style={styles.courseTitle}>{course.title}</Text>
-                <Text style={styles.subtitle}>{course.location}</Text>
-                <Text style={styles.text}>{course.description}</Text>
+                <Text>{job.money}</Text>
+                <Text style={styles.courseTitle}>{job.title}</Text>
+                <Text style={styles.subtitle}>{job.location.one}</Text>
+                <Text style={styles.text}>{job.location.two}</Text>
               </View>
             </ImageBackground>
           </View>
@@ -35,16 +35,15 @@ const App = () => {
       </ScrollView>
      
     </View>
+
   );
 };
 
-const coursesData = [
-  { title: 'Animation', image: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions ' },
-  { title: 'Self-Defense', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFBa3G11OUBYADP7ouSBgwiiRzSYorF4dfg&s', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions '  },
-  { title: 'CSS Course', image: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions '  },
-  { title: 'Finance', image: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions '  },
-  { title: 'Animation', image: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions '  },
-  { title: 'Self-Defense', image: 'https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp', location: 'Location: South LA', description: 'Cal Arts are preparing safe, creative, and fun workshop for children  find their creative passions '  },
+const jobData = [
+  {money: '$30/h-25/h', title: 'Middle UI/UX Designer', location: {one: 'Los Angeles', two: 'Canada', three: 'texas'}, image: 'https://fronty.com/static/uploads/design_vs.jpg' },
+  {money: '$30/h-25/h', title: 'Boxing Instructor', location: {one: 'Los Angeles', two: 'Canada', three: 'texas'}, image: 'https://alecpenix.com/wp-content/uploads/2022/06/IMG_3450.jpg' },
+  {money: '$30/h-25/h', title: 'Art Director', location: {one: 'Los Angeles', two: 'Canada', three: 'texas'}, image: 'https://i.ytimg.com/vi/BsK3tFH8-9k/sddefault.jpg' },
+  {money: '$30/h-25/h', title: 'Architect', location: {one: 'Los Angeles', two: 'Canada', three: 'texas'}, image: 'https://vin-yet.com/wp-content/uploads/2023/09/architects-working-on-a-blueprint.jpg' },
 ];
 
 const styles = StyleSheet.create({
@@ -136,7 +135,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     margin: 10
-  }
+  },
+  
 });
 
 export default App;

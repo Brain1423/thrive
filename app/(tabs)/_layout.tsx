@@ -10,25 +10,40 @@ export default function TabLayout() {
 
   return (
     <Tabs
+    
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarStyle:{
+          backgroundColor: '#2B5492'
+        }
+
+      }}
+      >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={'white'} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name='explore'
         options={{
-          title: 'Explore',
+          title: 'explore',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'walk' : 'walk-outline'} color={"white"} />
+          ),
+        }}
+      />
+        <Tabs.Screen
+        name="random"
+        options={{
+          title: 'Job',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={'white'} />
           ),
         }}
       />
