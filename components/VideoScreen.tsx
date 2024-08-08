@@ -1,74 +1,33 @@
-import { useVideoPlayer, VideoView } from "expo-video";
-import { useEffect, useRef, useState } from "react";
-import { PixelRatio, StyleSheet, View, Button } from "react-native";
-
-const videoSource =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+import * as React from "react";
+import { View, StyleSheet, Button } from "react-native";
+import { Video, ResizeMode } from "expo-av";
 
 export default function VideoScreen() {
-  const ref = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  //   const player = useVideoPlayer(videoSource, (player) => {
-  //     player.loop = true;
-  //     player.play();
-  //   });
-  const player = useVideoPlayer(
-    require("../assets/videos/front_end_video.mp4")
-    // (player) => {
-    //   player.loop = true;
-    //   player.play();
-    // }
-  );
-
-  useEffect(() => {
-    const subscription = player.addListener("playingChange", (isPlaying) => {
-      setIsPlaying(isPlaying);
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, [player]);
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
 
   return (
-    <View style={styles.contentContainer}>
-      <VideoView
-        ref={ref}
+    <View style={styles.container}>
+      <Video
+        ref={video}
         style={styles.video}
-        player={player}
-        allowsFullscreen
-        allowsPictureInPicture
+        source={require("@/assets/videos/front_end_video.mp4")}
+        useNativeControls
+        resizeMode={ResizeMode.CONTAIN}
+        isLooping
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
       />
-      <View style={styles.controlsContainer}>
-        <Button
-          title={isPlaying ? "Pause" : "Play"}
-          onPress={() => {
-            if (isPlaying) {
-              player.pause();
-            } else {
-              player.play();
-            }
-            setIsPlaying(!isPlaying);
-          }}
-        />
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
+  container: {
     flex: 1,
-    // padding: 10,
-    // alignItems: "center",
     justifyContent: "center",
-    // paddingHorizontal: 50,
   },
   video: {
     width: "100%",
-    height: 245,
-  },
-  controlsContainer: {
-    padding: 10,
+    height: 235,
   },
 });

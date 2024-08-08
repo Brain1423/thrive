@@ -5,6 +5,7 @@ import {
   Text,
   View,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
@@ -35,13 +36,19 @@ const SkillTreePage = () => {
   return (
     <View>
       <View style={styles.topContainer}>
-        <Pressable onPress={() => router.back()} style={styles.backButton}>
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={styles.backButton}
+        >
           <TabBarIcon name="arrow-back" size={40} />
-        </Pressable>
+        </TouchableOpacity>
         <Text style={styles.pageTitle}>Skill Tree</Text>
       </View>
       <ScrollView style={styles.scrollContainer}>
-        <Pressable onPress={() => router.navigate("frontEndSkill")}>
+        <TouchableOpacity
+          onPress={() => router.navigate("frontEndSkill")}
+          activeOpacity={0.8}
+        >
           <ImageBackground
             source={skills[0].source}
             style={styles.skillContainer}
@@ -53,9 +60,10 @@ const SkillTreePage = () => {
               <Text style={styles.skillText}>{skills[0].skillText}</Text>
             </LinearGradient>
           </ImageBackground>
-        </Pressable>
+        </TouchableOpacity>
         {skills.slice(1).map((skill, index) => (
-          <Pressable
+          <TouchableOpacity
+            activeOpacity={0.8}
             key={index}
             onPress={() => router.navigate("frontEndSkill")}
           >
@@ -71,7 +79,7 @@ const SkillTreePage = () => {
                 <Text style={styles.skillText}>{skill.skillText}</Text>
               </LinearGradient>
             </ImageBackground>
-          </Pressable>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
