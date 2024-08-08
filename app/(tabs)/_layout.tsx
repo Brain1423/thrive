@@ -20,7 +20,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="(pathways)"
         options={{
           title: "Pathways",
           tabBarIcon: ({ color, focused }) => (
@@ -43,9 +43,9 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="random"
+        name="jobs"
         options={{
-          title: "Job",
+          title: "Jobs",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "briefcase" : "briefcase-outline"}
